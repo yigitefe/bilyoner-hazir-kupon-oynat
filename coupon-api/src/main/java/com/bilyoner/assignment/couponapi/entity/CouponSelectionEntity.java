@@ -2,9 +2,8 @@ package com.bilyoner.assignment.couponapi.entity;
 
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Builder
 @Setter
@@ -18,7 +17,27 @@ public class CouponSelectionEntity {
     @GeneratedValue
     private Long id;
 
-    /**
-     * TODO : Implement missing parts
-     */
+    @ManyToOne
+    private CouponEntity coupon;
+
+    @ManyToOne
+    private EventEntity event;
+
+    @Column(columnDefinition = "TIMESTAMP")
+    private LocalDateTime createDate;
+
+    @Column(columnDefinition = "TIMESTAMP")
+    private LocalDateTime updateDate;
+
+    @PrePersist
+    public void onPrePersist() {
+        this.setCreateDate(LocalDateTime.now());
+        this.setUpdateDate(LocalDateTime.now());
+    }
+
+    @PreUpdate
+    public void onPreUpdate() {
+        this.setUpdateDate(LocalDateTime.now());
+    }
+
 }

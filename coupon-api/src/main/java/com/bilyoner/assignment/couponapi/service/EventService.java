@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -19,10 +20,12 @@ public class EventService {
     }
 
     public List<EventDTO> getEvents() {
-        /**
-         * TODO : Implement get events
-         */
-        return null;
+        return eventRepository.findAll().stream().map(item -> EventDTO.mapToEventDTO(item))
+                .collect(Collectors.toList());
+    }
+
+    public List<EventEntity> getEventsById(List<Long> eventIds) {
+        return eventRepository.findAllById(eventIds);
     }
 
     public EventDTO createEvent(EventDTO eventRequest) {
@@ -33,8 +36,6 @@ public class EventService {
                 .eventDate(eventRequest.getEventDate())
                 .build());
 
-        final EventDTO response = EventDTO.mapToEventDTO(createdEventEntity);
-
-        return response;
+        return EventDTO.mapToEventDTO(createdEventEntity);
     }
 }

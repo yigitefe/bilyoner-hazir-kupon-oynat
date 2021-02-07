@@ -10,11 +10,8 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
+@RequestMapping("/events")
 public class EventController {
-
-    /**
-     * TODO : Implement missing parts
-     */
 
     private final EventService eventService;
 
@@ -28,7 +25,4 @@ public class EventController {
         return eventService.createEvent(eventRequest);
     }
 
-    /**
-     * Implement event endpoints
-     */
 }

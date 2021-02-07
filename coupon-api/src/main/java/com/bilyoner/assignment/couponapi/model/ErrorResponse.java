@@ -8,7 +8,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ErrorResponse {
-
     private Integer code;
     private String message;
+    private String integrationMessage;
 }
