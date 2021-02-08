@@ -1,0 +1,146 @@
+{
+	"info": {
+		"_postman_id": "265ead69-753a-4e35-9a40-f7335339cd03",
+		"name": "coupon-api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "get-all-events",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:9091/events",
+					"host": [
+						"localhost"
+					],
+					"port": "9091",
+					"path": [
+						"events"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create-coupon",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"eventIds\": [\n        1,\n        2,\n        3\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:9091/coupons",
+					"host": [
+						"localhost"
+					],
+					"port": "9091",
+					"path": [
+						"coupons"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "play-coupons",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"userId\": 2,\n    \"couponIds\": [\n        20, 16\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:9091/coupons/play",
+					"host": [
+						"localhost"
+					],
+					"port": "9091",
+					"path": [
+						"coupons",
+						"play"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "cancel-coupon",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "localhost:9091/coupons/cancel/20",
+					"host": [
+						"localhost"
+					],
+					"port": "9091",
+					"path": [
+						"coupons",
+						"cancel",
+						"20"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get-played-coupons",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:9091/coupons/2",
+					"host": [
+						"localhost"
+					],
+					"port": "9091",
+					"path": [
+						"coupons",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get-all-coupons-by-status",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:9091/coupons?couponStatus=PLAYED",
+					"host": [
+						"localhost"
+					],
+					"port": "9091",
+					"path": [
+						"coupons"
+					],
+					"query": [
+						{
+							"key": "couponStatus",
+							"value": "PLAYED"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
